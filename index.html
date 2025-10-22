@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Samoa - Blue Totem Style Department Store</title>
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 统一的 Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f3460',
+            secondary: '#16213e',
+            accent: '#1a97f5',
+            light: '#e94560',
+            muted: '#d3d3d3',
+            'totem-blue': {
+              50: '#e6f0ff',
+              100: '#b3d1ff',
+              200: '#80b3ff',
+              300: '#4d94ff',
+              400: '#1a75ff',
+              500: '#0066ff',
+              600: '#0052cc',
+              700: '#003d99',
+              800: '#002966',
+              900: '#001433',
+            },
+            'totem-gold': {
+              50: '#fff9e6',
+              100: '#ffedb3',
+              200: '#ffe180',
+              300: '#ffd54d',
+              400: '#ffc91a',
+              500: '#ffbf00',
+              600: '#cca300',
+              700: '#997a00',
+              800: '#665200',
+              900: '#332900',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          backgroundImage: {
+            'totem-pattern': "url('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/fef5171964074f2b9d06d3fc06011a64~tplv-a9rns2rl98-image.image?rcl=202510220230059F8A4862564497025CBF&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1763663430&x-signature=a%2FDMSr%2FZbqygGT5pw6dGUBnBkzA%3D')",
+          },
+          boxShadow: {
+            'totem': '0 4px 20px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.1)',
+            'totem-hover': '0 10px 30px 0 rgba(0, 0, 0, 0.3), 0 15px 45px 0 rgba(0, 0, 0, 0.2)',
+          },
+          animation: {
+            'float': 'float 3s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      .text-shadow-lg {
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+      }
+      .bg-gradient-totem {
+        background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+      }
+      .bg-gradient-totem-light {
+        background: linear-gradient(135deg, #1a97f5 0%, #0f3460 100%);
+      }
+      .totem-border {
+        border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><path d="M0 0h4v4H0z" fill="%230066ff" stroke="%23ffbf00" stroke-width="1"/></svg>') 1 repeat;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- 背景图腾图案 -->
+  <div class="fixed inset-0 bg-totem-pattern bg-cover bg-center opacity-5 z-0"></div>
+
+  <!-- 顶部导航栏 -->
+  <header class="sticky top-0 z-50 bg-gradient-totem text-white shadow-md">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/105ea97d129a454bb3cca74864063153~tplv-a9rns2rl98-image.image?rcl=20251022030101E28CF5F2A8EC5E023ECE&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1763665306&x-signature=mDoJSTSQq8%2BMmpF1IlOrCH4tDDc%3D" alt="Romantic Samoa" class="h-10 w-10 object-contain">
+        <h1 class="text-2xl font-bold text-shadow">Romantic Samoa</h1>
+      </div>
+
+      <!-- 搜索框 -->
+      <div class="hidden md:flex items-center flex-1 max-w-md mx-6">
+        <div class="relative w-full">
+          <input type="text" id="search-input" placeholder="Search products..." class="w-full py-2 pl-10 pr-4 rounded-full bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-white placeholder-gray-300">
+          <i class="fa fa-search absolute left-3 top-3 text-gray-300"></i>
+        </div>
+      </div>
+
+      <!-- 导航菜单 -->
+      <nav class="flex items-center space-x-4">
+        <button id="mobile-search-btn" class="md:hidden text-white focus:outline-none">
+          <i class="fa fa-search text-xl"></i>
+        </button>
+        <button id="admin-btn" class="hidden flex items-center space-x-1 bg-totem-blue-500 hover:bg-totem-blue-600 px-3 py-1 rounded-full transition duration-300">
+          <i class="fa fa-user-circle"></i>
+          <span>管理员</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- 移动端搜索框 (默认隐藏) -->
+    <div id="mobile-search" class="md:hidden hidden px-4 py-2 bg-totem-blue-900">
+      <div class="relative">
+        <input type="text" id="mobile-search-input" placeholder="Search products..." class="w-full py-2 pl-10 pr-4 rounded-full bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-white placeholder-gray-300">
+        <i class="fa fa-search absolute left-3 top-3 text-gray-300"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="container mx-auto px-4 py-6 relative z-10">
+    <!-- 英雄区域 -->
+    <section class="relative rounded-xl overflow-hidden mb-10 shadow-totem">
+      <div class="absolute inset-0 bg-gradient-to-r from-totem-blue-900 to-totem-blue-700 opacity-80"></div>
+      <div class="relative h-64 md:h-96 flex items-center justify-center">
+        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/27e8cf1fe38e4ea984d59172f3d65fd0~tplv-a9rns2rl98-image.image?rcl=20251022031021F06226F852AAED8EF090&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1763665866&x-signature=vIxl5JYSPVVx3c4J8OyFSDPr7v8%3D" alt="蓝色图腾背景" class="w-full h-full object-cover">
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
+          <h2 class="text-3xl md:text-5xl font-bold mb-4 text-shadow-lg animate-float">Romantic Collection</h2>
+          <p class="text-lg md:text-xl mb-6 max-w-2xl text-shadow">Discover unique products that blend traditional totem culture with modern design</p>
+          <button id="explore-btn" class="bg-totem-gold-500 hover:bg-totem-gold-600 text-totem-blue-900 font-bold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-lg">
+            Explore Now
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 商品展示区 -->
+    <section class="mb-10">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-totem-blue-900 flex items-center">
+          <i class="fa fa-shopping-bag mr-2 text-totem-blue-500"></i>
+          Popular Products
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          <button id="all-btn" class="bg-totem-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">All</button>
+          <button id="electronics-btn" class="bg-gray-200 hover:bg-totem-blue-100 text-gray-700 px-4 py-1 rounded-full text-sm font-medium transition duration-300">Electronics</button>
+          <button id="home-btn" class="bg-gray-200 hover:bg-totem-blue-100 text-gray-700 px-4 py-1 rounded-full text-sm font-medium transition duration-300">Home Goods</button>
+          <button id="beauty-btn" class="bg-gray-200 hover:bg-totem-blue-100 text-gray-700 px-4 py-1 rounded-full text-sm font-medium transition duration-300">Beauty</button>
+          <button id="baby-btn" class="bg-gray-200 hover:bg-totem-blue-100 text-gray-700 px-4 py-1 rounded-full text-sm font-medium transition duration-300">Baby Products</button>
+          <button id="clothing-btn" class="bg-gray-200 hover:bg-totem-blue-100 text-gray-700 px-4 py-1 rounded-full text-sm font-medium transition duration-300">Clothing</button>
+          <button id="hot-btn" class="bg-gray-200 hover:bg-totem-blue-100 text-gray-700 px-4 py-1 rounded-full text-sm font-medium transition duration-300">Hot Sale</button>
+        </div>
+      </div>
+
+      <!-- 商品网格 -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- 商品卡片将通过 JavaScript 动态生成 -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-totem-blue-900 text-white py-8 relative z-10">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <div class="flex items-center space-x-2">
+            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/105ea97d129a454bb3cca74864063153~tplv-a9rns2rl98-image.image?rcl=20251022030101E28CF5F2A8EC5E023ECE&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1763665306&x-signature=mDoJSTSQq8%2BMmpF1IlOrCH4tDDc%3D" alt="Romantic Samoa" class="h-8 w-8 object-contain">
+            <h2 class="text-xl font-bold">Romantic Samoa</h2>
+          </div>
+          <p class="mt-2 text-gray-300">Blending traditional totem culture with modern design</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+            <i class="fa fa-facebook-square text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+            <i class="fa fa-twitter-square text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+            <i class="fa fa-instagram text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+            <i class="fa fa-pinterest-square text-2xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-totem-blue-800 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 Romantic Samoa. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 商品详情模态框 -->
+  <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-75" id="modal-overlay"></div>
+    <div class="relative bg-white rounded-xl shadow-totem w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4">
+      <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none z-10">
+        <i class="fa fa-times text-2xl"></i>
+      </button>
+      <div id="product-detail-content" class="p-6">
+        <!-- 商品详情将通过 JavaScript 动态生成 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 管理员登录模态框 -->
+  <div id="admin-login-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-75" id="admin-modal-overlay"></div>
+    <div class="relative bg-white rounded-xl shadow-totem w-full max-w-md mx-4">
+      <button id="close-admin-login" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none z-10">
+        <i class="fa fa-times text-2xl"></i>
+      </button>
+      <div class="p-6">
+        <div class="text-center mb-6">
+          <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/105ea97d129a454bb3cca74864063153~tplv-a9rns2rl98-image.image?rcl=20251022030101E28CF5F2A8EC5E023ECE&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1763665306&x-signature=mDoJSTSQq8%2BMmpF1IlOrCH4tDDc%3D" alt="Romantic Samoa" class="h-16 w-16 object-contain mx-auto mb-2">
+          <h2 class="text-2xl font-bold text-totem-blue-900">Admin Login</h2>
+        </div>
+        <form id="admin-login-form" class="space-y-4">
+          <div>
+            <label for="admin-username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+            <input type="text" id="admin-username" name="username" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-totem-blue-500 focus:border-transparent">
+          </div>
+          <div>
+            <label for="admin-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <input type="password" id="admin-password" name="password" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-totem-blue-500 focus:border-transparent">
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input type="checkbox" id="remember-me" name="remember-me" class="h-4 w-4 text-totem-blue-500 focus:ring-totem-blue-300 border-gray-300 rounded">
+              <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+            </div>
+            <a href="#" id="forgot-password" class="text-sm text-totem-blue-500 hover:text-totem-blue-700">Forgot password?</a>
+          </div>
+          <div>
+            <button type="submit" class="w-full bg-totem-blue-500 hover:bg-totem-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300">
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 管理员控制面板 -->
+  <div id="admin-panel" class="fixed inset-0 z-50 bg-totem-blue-900 bg-opacity-95 text-white hidden">
+    <div class="container mx-auto px-4 py-6 h-full flex flex-col">
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center space-x-2">
+          <i class="fa fa-tachometer text-2xl text-totem-gold-500"></i>
+          <h2 class="text-2xl font-bold">Admin Control Panel</h2>
+        </div>
+        <div class="flex space-x-4">
+          <button id="change-logo-btn" class="bg-totem-blue-700 hover:bg-totem-blue-600 px-3 py-1 rounded-full text-sm flex items-center">
+            <i class="fa fa-image mr-1"></i> Change Logo
+          </button>
+          <button id="change-password-btn" class="bg-totem-blue-700 hover:bg-totem-blue-600 px-3 py-1 rounded-full text-sm flex items-center">
+            <i class="fa fa-key mr-1"></i> Change Password
+          </button>
+          <button id="logout-admin" class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded-full text-sm flex items-center">
+            <i class="fa fa-sign-out mr-1"></i> Logout
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 overflow-y-auto">
+        <!-- 商品管理 -->
+        <div class="bg-totem-blue-800 rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-semibold mb-4 flex items-center">
+            <i class="fa fa-cubes mr-2 text-totem-gold-500"></i>
+            Product Management
+          </h3>
+          <div class="space-y-4">
+            <button id="add-product-btn" class="w-full bg-totem-gold-500 hover:bg-totem-gold-600 text-totem-blue-900 font-medium py-2 px-4 rounded-md transition duration-300 flex items-center justify-center">
+              <i class="fa fa-plus mr-2"></i> Add Product
+            </button>
+            <div class="relative">
+              <input type="text" id="admin-search-input" placeholder="Search products..." class="w-full py-2 pl-10 pr-4 rounded-full bg-white bg-opacity-10 border border-white border-opacity-20 focus:outline-none focus:ring-2 focus:ring-totem-gold-500 focus:border-transparent text-white placeholder-gray-300">
+              <i class="fa fa-search absolute left-3 top-3 text-gray-300"></i>
+            </div>
+            <div id="admin-products-list" class="max-h-96 overflow-y-auto space-y-3 scrollbar-hide">
+              <!-- 管理员商品列表将通过 JavaScript 动态生成 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 商品编辑表单 -->
+        <div class="bg-totem-blue-800 rounded-xl p-6 shadow-lg md:col-span-2">
+          <h3 id="edit-form-title" class="text-xl font-semibold mb-4 flex items-center">
+            <i class="fa fa-pencil mr-2 text-totem-gold-500"></i>
+            Add New Product
+          </h3>
+          <form id="product-form" class="space-y-4">
+            <input type="hidden" id="product-id">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="product-name" class="block text-sm font-medium text-gray-300 mb-1">Product Name</label>
+                <input type="text" id="product-name" name="name" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-white bg-opacity-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-totem-gold-500 focus:border-transparent">
+              </div>
+              <div>
+                <label for="product-price" class="block text-sm font-medium text-gray-300 mb-1">Price (¥)</label>
+                <input type="number" id="product-price" name="price" required min="0" step="0.01" class="w-full px-4 py-2 border border-gray-600 rounded-md bg-white bg-opacity-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-totem-gold-500 focus:border-transparent">
+              </div>
+            </div>
+            <div>
+              <label for="product-category" class="block text-sm font-medium text-gray-300 mb-1">Category</label>
+              <select id="product-category" name="category" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-white bg-opacity-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-totem-gold-500 focus:border-transparent">
+                <option value="electronics">Electronics</option>
+                <option value="home">Home Goods</option>
+                <option value="beauty">Beauty</option>
+                <option value="baby">Baby Products</option>
+                <option value="clothing">Clothing</option>
+                <option value="hot">Hot Sale</option>
+              </select>
+            </div>
+            <div>
+              <label for="product-tags" class="block text-sm font-medium text-gray-300 mb-1">Tags (separated by commas)</label>
+              <input type="text" id="product-tags" name="tags" placeholder="例如: 热门,新品,折扣" class="w-full px-4 py-2 border border-gray-600 rounded-md bg-white bg-opacity-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-totem-gold-500 focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-1">商品图片 (最多 6 张)</label>
+              <div class="flex items-center space-x-4">
+                <input type="file" id="product-image-upload" accept="image/*" multiple class="hidden">
+                <button type="button" id="upload-image-btn" class="bg-totem-blue-700 hover:bg-totem-blue-600 px-4 py-2 rounded-md text-sm flex items-center">
+                  <i class="fa fa-upload mr-2"></i> 选择图片
+                </button>
+                <span id="image-upload-status" class="text-sm text-gray-400"></span>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">Supports JPG, PNG, GIF formats, single image up to 5MB</p>
+            </div>
+            <div>
+              <label for="product-description" class="block text-sm font-medium text-gray-300 mb-1">Description</label>
+              <textarea id="product-description" name="description" rows="4" required class="w-full px-4 py-2 border border-gray-600 rounded-md bg-white bg-opacity-10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-totem-gold-500 focus:border-transparent"></textarea>
+            </div>
+            <div class="flex justify-end space-x-3">
+              <button type="button" id="cancel-product-btn" class="px-4 py-2 border border-gray-500 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300">
+                取消
+              </button>
+              <button type="submit" class="px-4 py-2 bg-totem-gold-500 hover:bg-totem-gold-600 text-totem-blue-900 font-medium rounded-md transition duration-300">
+                保存商品
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 修改密码模态框 -->
+  <div id="change-password-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-75" id="change-password-overlay"></div>
+    <div class="relative bg-white rounded-xl shadow-totem w-full max-w-md mx-4">
+      <button id="close-change-password" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none z-10">
+        <i class="fa fa-times text-2xl"></i>
+      </button>
+      <div class="p-6">
+        <h2 class="text-2xl font-bold text-totem-blue-900 mb-6 text-center">Change Admin Password</h2>
+        <form id="change-password-form" class="space-y-4">
+          <div>
+            <label for="current-password" class="block text-sm font-medium text-gray-700 mb-1">Current Password</label>
+            <input type="password" id="current-password" name="current-password" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-totem-blue-500 focus:border-transparent">
+          </div>
+          <div>
+            <label for="new-password" class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+            <input type="password" id="new-password" name="new-password" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-totem-blue-500 focus:border-transparent">
+          </div>
+          <div>
+            <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm New Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-totem-blue-500 focus:border-transparent">
+          </div>
+          <div class="flex justify-end space-x-3">
+            <button type="button" id="cancel-change-password" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition duration-300">
+              Cancel
+            </button>
+            <button type="submit" class="px-4 py-2 bg-totem-blue-500 hover:bg-totem-blue-600 text-white font-medium rounded-md transition duration-300">
+              Update Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 通知提示 -->
+  <div id="notification" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center">
+    <i class="fa fa-check-circle mr-2"></i>
+    <span id="notification-message">Operation successful!</span>
+  </div>
+
+  <script>
+    // 模拟数据 - 商品
+    let products = [
+      {
+        id: 1,
+        name: "Totem Style Phone Case",
+        price: 39.9,
+        category: "electronics",
+        tags: ["Phone Accessories", "Totem Style", "Popular"],
+        images: [
+          "https://p26-doubao-search-sign.byteimg.com/labis/aa21d9a585e58dc339a5d51d271f9ece~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=Zu%2BFmwmHBDJsW9efm%2FwU7O63jTs%3D",
+          "https://p26-doubao-search-sign.byteimg.com/labis/aa21d9a585e58dc339a5d51d271f9ece~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=Zu%2BFmwmHBDJsW9efm%2FwU7O63jTs%3D",
+          "https://p26-doubao-search-sign.byteimg.com/labis/aa21d9a585e58dc339a5d51d271f9ece~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=Zu%2BFmwmHBDJsW9efm%2FwU7O63jTs%3D"
+        ],
+        description: "Phone case designed with traditional totem elements, combining modern aesthetics with traditional culture. Protects your phone while showcasing unique personality. Made of high-quality silicone, anti-drop and wear-resistant, comfortable to hold.",
+        clicks: 125
+      },
+      {
+        id: 2,
+        name: "Smart Speaker",
+        price: 299.0,
+        category: "electronics",
+        tags: ["Smart Devices", "Audio", "New Arrival"],
+        images: [
+          "https://p26-doubao-search-sign.byteimg.com/labis/b52da2619292edb708e9ef07dc9d7d23~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=Q9wG8KX2%2BWV%2BEaNcmnDbfvVwv5Q%3D",
+          "https://p26-doubao-search-sign.byteimg.com/labis/b52da2619292edb708e9ef07dc9d7d23~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=Q9wG8KX2%2BWV%2BEaNcmnDbfvVwv5Q%3D"
+        ],
+        description: "High-quality smart speaker with voice control, built-in multiple music platforms, providing excellent sound quality. Simple and modern design, suitable for various home styles. Supports smart home control for a more convenient life.",
+        clicks: 89
+      },
+      {
+        id: 3,
+        name: "Totem Pattern Pillow",
+        price: 59.9,
+        category: "home",
+        tags: ["Home Decoration", "Pillow", "Totem Style"],
+        images: [
+          "https://p26-doubao-search-sign.byteimg.com/tos-cn-i-xv4ileqgde/23705a5cccb3415b818792fe57692457~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=hGyP4j%2FP8fLQ4wT2cdyi3XRgXjw%3D"
+        ],
+        description: "Pillow designed with traditional totem patterns, made of pure cotton fabric with high-quality PP cotton filling, soft and comfortable. Not only a good choice for home decoration, but also provides comfortable support. Multiple totem patterns available to meet different style needs.",
+        clicks: 203
+      },
+      {
+        id: 4,
+        name: "Multi-functional Storage Box",
+        price: 45.0,
+        category: "home",
+        tags: ["Storage", "Home Goods", "Practical"],
+        images: [
+          "https://p26-doubao-search-sign.byteimg.com/labis/cb60eda635dcbda403d8521556a33476~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=k5XGU%2FKmxXwoGJhR2ilLPvVQu9Y%3D",
+          "https://p26-doubao-search-sign.byteimg.com/labis/cb60eda635dcbda403d8521556a33476~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=k5XGU%2FKmxXwoGJhR2ilLPvVQu9Y%3D"
+        ],
+        description: "Multi-functional storage box made of environmentally friendly materials with a simple and elegant design. Multiple compartments for storing cosmetics, stationery, jewelry and other small items, keeping your desk tidy and organized. Non-slip bottom design for safer use.",
+        clicks: 56
+      },
+      {
+        id: 5,
+        name: "Infrared Alarm",
+        price: 89.0,
+        category: "electronics",
+        tags: ["Security", "Smart Devices", "Safety"],
+        images: [
+          "https://p11-doubao-search-sign.byteimg.com/labis/c25c66aef522fc42075e3df1419e5d4f~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=8Rx1HBjNSAwm3PEvIqk6Yedh2CE%3D"
+        ],
+        description: "High-precision infrared alarm using advanced infrared detection technology, high sensitivity and low false alarm rate. Suitable for home, office and other places for security protection. Easy to install and use, supports remote alarm function.",
+        clicks: 32
+      },
+      {
+        id: 6,
+        name: "Creative Towel Holder",
+        price: 29.9,
+        category: "home",
+        tags: ["Kitchen Supplies", "Creative", "Practical"],
+        images: [
+          "https://p26-doubao-search-sign.byteimg.com/labis/15e33398af6671315c4c92299c1089da~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=8tL8MLDjLno9dlOmByxWibdTH2U%3D"
+        ],
+        description: "Creative towel holder with strong suction cup design, no drilling required, no damage to walls. Cute design adds a bright color to the kitchen. Suitable for hanging towels, rags and other items, convenient and practical.",
+        clicks: 78
+      },
+      {
+        id: 7,
+        name: "Handheld Electronic Device",
+        price: 199.0,
+        category: "electronics",
+        tags: ["Portable", "Electronic Devices", "Popular"],
+        images: [
+          "https://p11-doubao-search-sign.byteimg.com/tos-cn-i-xv4ileqgde/f0d1b916608b4cd0a493b467a8425746~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=JrWXpm5dOOQZ3dtUxuvY7bBAK%2BM%3D"
+        ],
+        description: "Multi-functional handheld electronic device with fashionable design and easy portability. Supports multiple functions to meet your daily needs. Made of high-quality materials for durability. Long battery life, can be used for several days on a single charge.",
+        clicks: 145
+      },
+      {
+        id: 8,
+        name: "Wicker Storage Basket",
+        price: 79.0,
+        category: "home",
+        tags: ["Storage", "Home Decoration", "Natural"],
+        images: [
+          "https://p26-doubao-search-sign.byteimg.com/labis/3c49e3f666af5ff138b0edb51041fd34~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=50sZTHbB18uSlqq6dVfr5ad79Fo%3D",
+          "https://p26-doubao-search-sign.byteimg.com/labis/3c49e3f666af5ff138b0edb51041fd34~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=50sZTHbB18uSlqq6dVfr5ad79Fo%3D"
+        ],
+        description: "Natural wicker storage basket, hand-woven with exquisite craftsmanship. Natural and environmentally friendly materials, healthy and non-toxic. Can be used to store clothes, toys, books and other items, both practical and beautiful, adding a natural atmosphere to the home.",
+        clicks: 67
+      },
+      {
+        id: 9,
+        name: "Baby Swaddle Blanket",
+        price: 59.9,
+        category: "baby",
+        tags: ["Baby Products", "Swaddle", "Newborn"],
+        images: [
+          "https://p3-doubao-search-sign.byteimg.com/labis/3266988c7851064c9d9b620d910daed4~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776625326&x-signature=6seBay4ighveRQTPZysXat4yIUg%3D",
+          "https://p3-doubao-search-sign.byteimg.com/labis/1a180658759e612cdbef860daf7df853~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776625326&x-signature=ZoSSHKVdMf6peNZiw6AFl%2BnrUyI%3D"
+        ],
+        description: "Soft cotton baby swaddle blanket for newborns. Provides a secure and comfortable environment for your baby. Perfect for spring, summer, autumn and winter use. Cute patterns add charm to your baby's nursery.",
+        clicks: 98
+      },
+      {
+        id: 10,
+        name: "Infant Sleeping Bag",
+        price: 79.9,
+        category: "baby",
+        tags: ["Baby Products", "Sleeping Bag", "Winter"],
+        images: [
+          "https://p3-doubao-search-sign.byteimg.com/labis/4472e0b35e4953b3cdc683b1b0afb24f~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776625326&x-signature=V2JmyIZdLLBgXRPJFuBKxEeskfg%3D"
+        ],
+        description: "Warm and cozy infant sleeping bag for winter use. Made of high-quality cotton material, soft and skin-friendly. Helps your baby sleep comfortably throughout the night. Easy to put on and take off.",
+        clicks: 76
+      },
+      {
+        id: 11,
+        name: "Fashionable Women's Outfit",
+        price: 129.9,
+        category: "clothing",
+        tags: ["Clothing", "Women's Fashion", "New Arrival"],
+        images: [
+          "https://p11-doubao-search-sign.byteimg.com/labis/af1d17a911959556487395f714a123c4~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776625326&x-signature=4jxY3xN8twisXDQFCqJDg2jbWM0%3D"
+        ],
+        description: "Stylish women's outfit with unique totem patterns. Made of high-quality fabric, comfortable to wear. Perfect for various occasions, from casual outings to special events. Available in multiple sizes.",
+        clicks: 156
+      },
+      {
+        id: 12,
+        name: "Men's Sports Suit",
+        price: 149.9,
+        category: "clothing",
+        tags: ["Clothing", "Men's Fashion", "Sports"],
+        images: [
+          "https://p3-doubao-search-sign.byteimg.com/labis/f6f368458d8877ec9caac90f586169b1~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776625326&x-signature=Bvfl4QFNaxNONGiDYaI6LrbWKOc%3D"
+        ],
+        description: "Comfortable men's sports suit made of breathable fabric. Perfect for outdoor activities and casual wear. Stylish design with modern elements. Available in multiple colors and sizes.",
+        clicks: 112
+      },
+      {
+        id: 13,
+        name: "Beach Shell Anklet",
+        price: 29.9,
+        category: "hot",
+        tags: ["Jewelry", "Beach Style", "Hot Sale"],
+        images: [
+          "https://p3-doubao-search-sign.byteimg.com/labis/image/7c62f8ce05de8fb341479a02d3135c7b~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776625326&x-signature=X%2B4vw3wJuM6sHEnqRfVn0qC8dJo%3D"
+        ],
+        description: "Beautiful beach shell anklet with colorful shell pendants. Perfect accessory for summer and beach activities. Made of high-quality materials, durable and long-lasting. A popular item among fashion lovers.",
+        clicks: 215
+      },
+      {
+        id: 14,
+        name: "French Press Coffee Maker",
+        price: 89.9,
+        category: "hot",
+        tags: ["Kitchenware", "Coffee Lover", "Hot Sale"],
+        images: [
+          "https://p3-doubao-search-sign.byteimg.com/labis/image/98bd59d29eb624a8466e68a8f54af16b~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776625326&x-signature=6uMqbhX7CrCTD%2BuvW6klIVbE1rc%3D"
+        ],
+        description: "High-quality French press coffee maker made of stainless steel. Perfect for coffee enthusiasts. Easy to use and clean. Produces rich and flavorful coffee. A best-selling item in our store.",
+        clicks: 187
+      },
+      {
+        id: 15,
+        name: "Sports Water Bottle & Towel Set",
+        price: 49.9,
+        category: "hot",
+        tags: ["Sports", "Fitness", "Hot Sale"],
+        images: [
+          "https://p3-doubao-search-sign.byteimg.com/labis/bbc88f9a0888b1e3b91d2933d9ee899f~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776625326&x-signature=9SAtdBhg%2BfQ66YpIc1LjJXH3Yls%3D"
+        ],
+        description: "Practical sports water bottle and towel set. Perfect for fitness, gym and outdoor activities. BPA-free water bottle with leak-proof design. Absorbent towel with quick-drying function. A popular gift choice.",
+        clicks: 165
+      }
+    ];
+
+    // 模拟数据 - 管理员账户
+    let admin = {
+      username: "admin",
+      password: "admin123", // 实际应用中应该使用加密存储
+      logo: "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/105ea97d129a454bb3cca74864063153~tplv-a9rns2rl98-image.image?rcl=20251022030101E28CF5F2A8EC5E023ECE&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1763665306&x-signature=mDoJSTSQq8%2BMmpF1IlOrCH4tDDc%3D"
+    };
+
+    // 当前登录状态
+    let isAdminLoggedIn = false;
+
+    // DOM 元素
+    const productsGrid = document.getElementById('products-grid');
+    const productModal = document.getElementById('product-modal');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const closeModal = document.getElementById('close-modal');
+    const productDetailContent = document.getElementById('product-detail-content');
+    const adminBtn = document.getElementById('admin-btn');
+    const adminLoginModal = document.getElementById('admin-login-modal');
+    const adminModalOverlay = document.getElementById('admin-modal-overlay');
+    const closeAdminLogin = document.getElementById('close-admin-login');
+    const adminLoginForm = document.getElementById('admin-login-form');
+    const adminPanel = document.getElementById('admin-panel');
+    const logoutAdmin = document.getElementById('logout-admin');
+    const adminProductsList = document.getElementById('admin-products-list');
+    const productForm = document.getElementById('product-form');
+    const addProductBtn = document.getElementById('add-product-btn');
+    const editFormTitle = document.getElementById('edit-form-title');
+    const productIdInput = document.getElementById('product-id');
+    const cancelProductBtn = document.getElementById('cancel-product-btn');
+    const changePasswordBtn = document.getElementById('change-password-btn');
+    const changePasswordModal = document.getElementById('change-password-modal');
+    const changePasswordOverlay = document.getElementById('change-password-overlay');
+    const closeChangePassword = document.getElementById('close-change-password');
+    const cancelChangePassword = document.getElementById('cancel-change-password');
+    const changePasswordForm = document.getElementById('change-password-form');
+    const notification = document.getElementById('notification');
+    const notificationMessage = document.getElementById('notification-message');
+    const searchInput = document.getElementById('search-input');
+    const mobileSearchBtn = document.getElementById('mobile-search-btn');
+    const mobileSearch = document.getElementById('mobile-search');
+    const mobileSearchInput = document.getElementById('mobile-search-input');
+    const adminSearchInput = document.getElementById('admin-search-input');
+    const allBtn = document.getElementById('all-btn');
+    const electronicsBtn = document.getElementById('electronics-btn');
+    const homeBtn = document.getElementById('home-btn');
+    const beautyBtn = document.getElementById('beauty-btn');
+    const babyBtn = document.getElementById('baby-btn');
+    const clothingBtn = document.getElementById('clothing-btn');
+    const hotBtn = document.getElementById('hot-btn');
+    const exploreBtn = document.getElementById('explore-btn');
+    const forgotPassword = document.getElementById('forgot-password');
+    const productImageUpload = document.getElementById('product-image-upload');
+    const uploadImageBtn = document.getElementById('upload-image-btn');
+    const imageUploadStatus = document.getElementById('image-upload-status');
+
+    // 初始化页面
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts(products);
+      setupEventListeners();
+      
+      // 实现管理员按钮显示功能
+      implementAdminButtonDisplay();
+      
+      // 添加alt+F3+F组合键显示管理员按钮的功能
+      let pressedKeys = [];
+      const adminKeySequence = ['Alt', 'F3', 'f'];
+      
+      document.addEventListener('keydown', (e) => {
+        // 记录按下的键
+        if (!pressedKeys.includes(e.key)) {
+          pressedKeys.push(e.key);
+        }
+        
+        // 检查是否匹配管理员密钥序列
+        const matchesSequence = adminKeySequence.every((key, index) => {
+          return pressedKeys[index] === key;
+        });
+        
+        if (matchesSequence && pressedKeys.length === adminKeySequence.length) {
+          e.preventDefault(); // 阻止浏览器默认行为
+          const adminBtn = document.getElementById('admin-btn');
+          adminBtn.classList.toggle('hidden');
+          showNotification(adminBtn.classList.contains('hidden') ? '管理员入口已隐藏' : '管理员入口已显示');
+          // 重置按键序列
+          pressedKeys = [];
+        }
+        
+        // 如果按下的键不在序列中，或者序列长度超过，重置序列
+        if (!adminKeySequence.includes(e.key) || pressedKeys.length > adminKeySequence.length) {
+          pressedKeys = [];
+        }
+      });
+      
+      // 监听keyup事件，移除已释放的键
+      document.addEventListener('keyup', (e) => {
+        if (e.key === 'Alt') {
+          pressedKeys = [];
+        }
+      });
+    });
+
+    // 设置事件监听器
+    function setupEventListeners() {
+      // 商品详情模态框
+      modalOverlay.addEventListener('click', closeProductModal);
+      closeModal.addEventListener('click', closeProductModal);
+
+      // 管理员登录
+      adminBtn.addEventListener('click', openAdminLogin);
+      adminModalOverlay.addEventListener('click', closeAdminLoginModal);
+      closeAdminLogin.addEventListener('click', closeAdminLoginModal);
+      adminLoginForm.addEventListener('submit', handleAdminLogin);
+
+      // 管理员面板
+      logoutAdmin.addEventListener('click', handleAdminLogout);
+      addProductBtn.addEventListener('click', clearProductForm);
+      cancelProductBtn.addEventListener('click', clearProductForm);
+      productForm.addEventListener('submit', handleProductFormSubmit);
+
+      // 修改密码
+      changePasswordBtn.addEventListener('click', openChangePasswordModal);
+      changePasswordOverlay.addEventListener('click', closeChangePasswordModal);
+      closeChangePassword.addEventListener('click', closeChangePasswordModal);
+      cancelChangePassword.addEventListener('click', closeChangePasswordModal);
+      changePasswordForm.addEventListener('submit', handleChangePassword);
+
+      // 搜索功能
+      searchInput.addEventListener('input', handleSearch);
+      mobileSearchBtn.addEventListener('click', toggleMobileSearch);
+      mobileSearchInput.addEventListener('input', handleSearch);
+      adminSearchInput.addEventListener('input', handleAdminSearch);
+
+      // 分类筛选
+      allBtn.addEventListener('click', () => filterByCategory('all'));
+      electronicsBtn.addEventListener('click', () => filterByCategory('electronics'));
+      homeBtn.addEventListener('click', () => filterByCategory('home'));
+      beautyBtn.addEventListener('click', () => filterByCategory('beauty'));
+      babyBtn.addEventListener('click', () => filterByCategory('baby'));
+      clothingBtn.addEventListener('click', () => filterByCategory('clothing'));
+      hotBtn.addEventListener('click', () => filterByCategory('hot'));
+      
+      // 探索按钮
+      exploreBtn.addEventListener('click', showRandomHotProduct);
+
+      // 忘记密码
+      forgotPassword.addEventListener('click', (e) => {
+        e.preventDefault();
+        showNotification('请联系系统管理员重置密码', 'info');
+      });
+      
+      // 图片上传
+      uploadImageBtn.addEventListener('click', () => {
+        productImageUpload.click();
+      });
+      
+      productImageUpload.addEventListener('change', handleImageUpload);
+      
+      // 更改Logo
+      document.getElementById('change-logo-btn').addEventListener('click', () => {
+        const logoInput = document.createElement('input');
+        logoInput.type = 'file';
+        logoInput.accept = 'image/*';
+        logoInput.style.display = 'none';
+        
+        logoInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          
+          // 检查文件类型
+          if (!file.type.match('image.*')) {
+            showNotification('Please upload an image file', 'error');
+            return;
+          }
+          
+          // 检查文件大小 (最大 5MB)
+          if (file.size > 5 * 1024 * 1024) {
+            showNotification('Image size cannot exceed 5MB', 'error');
+            return;
+          }
+          
+          // 读取图片并更新
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const newLogo = e.target.result;
+            
+            // 更新管理员数据
+            admin.logo = newLogo;
+            
+            // 保存管理员数据
+            saveAdminData();
+            
+            // 更新页面上的Logo
+            document.querySelectorAll('header img, footer img, .text-center.mb-6 img').forEach(img => {
+              img.src = newLogo;
+            });
+            
+            showNotification('Logo updated successfully');
+          };
+          
+          reader.readAsDataURL(file);
+        });
+        
+        document.body.appendChild(logoInput);
+        logoInput.click();
+        document.body.removeChild(logoInput);
+      });
+    }
+
+    // 渲染商品列表
+    function renderProducts(productsToRender) {
+      productsGrid.innerHTML = '';
+
+      if (productsToRender.length === 0) {
+        productsGrid.innerHTML = `
+          <div class="col-span-full flex flex-col items-center justify-center py-12 text-center">
+            <i class="fa fa-search text-4xl text-gray-400 mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-600 mb-2">未找到商品</h3>
+            <p class="text-gray-500">请尝试其他搜索词或分类</p>
+          </div>
+        `;
+        return;
+      }
+
+      productsToRender.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'bg-white rounded-xl overflow-hidden shadow-totem hover:shadow-totem-hover transition duration-300 transform hover:-translate-y-1';
+        
+        // 获取第一张图片作为封面图
+        const coverImage = product.images && product.images.length > 0 ? product.images[0] : '';
+        
+        productCard.innerHTML = `
+          <div class="relative overflow-hidden h-48">
+            <img src="${coverImage}" alt="${product.name}" class="w-full h-full object-cover transition duration-500 hover:scale-110 cursor-pointer product-image" data-id="${product.id}">
+            <div class="absolute top-2 right-2 bg-totem-gold-500 text-totem-blue-900 text-xs font-bold px-2 py-1 rounded-full">
+              ¥${product.price.toFixed(2)}
+            </div>
+            <div class="absolute bottom-2 right-2 bg-totem-blue-900 bg-opacity-70 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center">
+              <i class="fa fa-eye mr-1"></i> ${product.clicks}
+            </div>
+            ${product.images && product.images.length > 1 ? `
+              <div class="absolute top-2 left-2 bg-totem-blue-900 bg-opacity-70 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                <i class="fa fa-picture-o mr-1"></i> ${product.images.length}
+              </div>
+            ` : ''}
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-totem-blue-900 mb-2">${product.name}</h3>
+            <div class="flex flex-wrap gap-1 mb-3">
+              ${product.tags.map(tag => `
+                <span class="bg-totem-blue-100 text-totem-blue-800 text-xs px-2 py-1 rounded-full">
+                  ${tag}
+                </span>
+              `).join('')}
+            </div>
+            <button class="view-details w-full bg-totem-blue-500 hover:bg-totem-blue-600 text-white text-sm py-2 rounded-md transition duration-300" data-id="${product.id}">
+              View Details
+            </button>
+          </div>
+        `;
+        productsGrid.appendChild(productCard);
+
+        // 添加查看详情事件
+        productCard.querySelector('.view-details').addEventListener('click', () => {
+          openProductDetails(product.id);
+        });
+        
+        // 添加图片点击事件
+        productCard.querySelector('.product-image').addEventListener('click', () => {
+          openProductDetails(product.id);
+        });
+      });
+    }
+
+    // 打开商品详情
+    function openProductDetails(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+      
+      // 增加点击量
+      product.clicks = (product.clicks || 0) + 1;
+      
+      // 更新商品列表中的点击量显示
+      const productCards = productsGrid.querySelectorAll('.bg-white.rounded-xl');
+      productCards.forEach(card => {
+        const viewDetailsBtn = card.querySelector('.view-details');
+        if (viewDetailsBtn && parseInt(viewDetailsBtn.dataset.id) === productId) {
+          const clicksElement = card.querySelector('.absolute.bottom-2.right-2');
+          if (clicksElement) {
+            clicksElement.innerHTML = `<i class="fa fa-eye mr-1"></i> ${product.clicks}`;
+          }
+        }
+      });
+      
+      // 更新管理员列表中的点击量显示
+      if (isAdminLoggedIn) {
+        renderAdminProductsList();
+      }
+
+      // 获取商品图片列表，如果没有则使用空数组
+      const productImages = product.images || [];
+      
+      productDetailContent.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            ${productImages.length > 0 ? `
+              <div class="relative" id="product-carousel">
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                  <div class="flex transition-transform duration-500" id="carousel-slides">
+                    ${productImages.map((img, index) => `
+                      <div class="min-w-full" data-index="${index}">
+                        <img src="${img}" alt="${product.name} - 图片${index + 1}" class="w-full h-auto">
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+                
+                <!-- 轮播控制按钮 -->
+                <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-70 focus:outline-none" id="prev-slide">
+                  <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-70 focus:outline-none" id="next-slide">
+                  <i class="fa fa-chevron-right"></i>
+                </button>
+                
+                <!-- 轮播指示器 -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2" id="carousel-indicators">
+                  ${productImages.map((_, index) => `
+                    <button class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-75 focus:outline-none ${index === 0 ? 'bg-opacity-100' : ''}" data-index="${index}"></button>
+                  `).join('')}
+                </div>
+              </div>
+            ` : `
+              <div class="bg-gray-200 rounded-lg shadow-lg flex items-center justify-center h-64">
+                <span class="text-gray-500">无图片</span>
+              </div>
+            `}
+          </div>
+          <div>
+            <div class="flex justify-between items-start">
+              <h2 class="text-2xl font-bold text-totem-blue-900">${product.name}</h2>
+              <div class="bg-totem-blue-100 text-totem-blue-800 text-sm px-3 py-1 rounded-full flex items-center">
+                <i class="fa fa-eye mr-1"></i> 浏览量: ${product.clicks}
+              </div>
+            </div>
+            <div class="text-3xl font-bold text-totem-gold-500 mt-2 mb-4">¥${product.price.toFixed(2)}</div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              ${product.tags.map(tag => `
+                <span class="bg-totem-blue-100 text-totem-blue-800 text-sm px-3 py-1 rounded-full">
+                  ${tag}
+                </span>
+              `).join('')}
+            </div>
+            <div class="border-t border-gray-200 pt-4">
+              <h3 class="text-lg font-semibold text-totem-blue-800 mb-2">Description</h3>
+              <p class="text-gray-700 leading-relaxed">${product.description}</p>
+            </div>
+            <div class="mt-6 flex space-x-3">
+              <button class="bg-totem-blue-500 hover:bg-totem-blue-600 text-white font-medium py-2 px-6 rounded-md transition duration-300 flex-1">
+                Add to Cart
+              </button>
+              <button class="bg-totem-gold-500 hover:bg-totem-gold-600 text-totem-blue-900 font-medium py-2 px-6 rounded-md transition duration-300 flex-1">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // 初始化轮播功能
+      if (productImages.length > 1) {
+        initProductCarousel();
+      }
+
+      productModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭商品详情模态框
+    function closeProductModal() {
+      productModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // 打开管理员登录
+    function openAdminLogin() {
+      if (isAdminLoggedIn) {
+        toggleAdminPanel();
+        return;
+      }
+      adminLoginModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭管理员登录模态框
+    function closeAdminLoginModal() {
+      adminLoginModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // 处理管理员登录
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById('admin-username').value;
+      const password = document.getElementById('admin-password').value;
+
+      if (username === admin.username && password === admin.password) {
+        isAdminLoggedIn = true;
+        closeAdminLoginModal();
+        toggleAdminPanel();
+        renderAdminProductsList();
+        showNotification('登录成功');
+      } else {
+        showNotification('用户名或密码错误', 'error');
+      }
+    }
+
+    // 切换管理员面板显示
+    function toggleAdminPanel() {
+      if (!isAdminLoggedIn) return;
+      
+      if (adminPanel.classList.contains('hidden')) {
+        adminPanel.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        // 初始化管理员商品列表
+        renderAdminProductsList();
+      } else {
+        adminPanel.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // 处理管理员退出
+    function handleAdminLogout() {
+      isAdminLoggedIn = false;
+      adminPanel.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+      showNotification('已成功退出');
+    }
+
+    // 渲染管理员商品列表
+    function renderAdminProductsList(filteredProducts = null) {
+      const productsToRender = filteredProducts || products;
+      adminProductsList.innerHTML = '';
+
+      if (productsToRender.length === 0) {
+        adminProductsList.innerHTML = `
+          <div class="text-center py-4 text-gray-400">
+            未找到商品
+          </div>
+        `;
+        return;
+      }
+
+      productsToRender.forEach(product => {
+        const productItem = document.createElement('div');
+        productItem.className = 'bg-totem-blue-700 rounded-lg p-3 flex items-center justify-between hover:bg-totem-blue-600 transition duration-300 cursor-pointer';
+        productItem.innerHTML = `
+          <div class="flex items-center">
+            <img src="${product.images && product.images.length > 0 ? product.images[0] : ''}" alt="${product.name}" class="w-10 h-10 object-cover rounded mr-3">
+            <div>
+              <h4 class="font-medium">${product.name}</h4>
+              <div class="flex items-center text-xs text-gray-300 mt-1">
+                <span class="mr-2">¥${product.price.toFixed(2)}</span>
+                <span class="flex items-center"><i class="fa fa-eye mr-1"></i> ${product.clicks || 0}</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex space-x-2">
+            <button class="edit-product text-totem-gold-500 hover:text-totem-gold-400" data-id="${product.id}">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="delete-product text-red-400 hover:text-red-300" data-id="${product.id}" onclick="deleteProduct(${product.id}); return false;">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+        `;
+        adminProductsList.appendChild(productItem);
+
+        // 添加编辑和删除事件
+        productItem.querySelector('.edit-product').addEventListener('click', (e) => {
+          e.stopPropagation();
+          editProduct(product.id);
+        });
+
+        productItem.querySelector('.delete-product').addEventListener('click', (e) => {
+          e.stopPropagation();
+          deleteProduct(product.id);
+        });
+
+        // 点击商品项也可以编辑
+        productItem.addEventListener('click', () => {
+          editProduct(product.id);
+        });
+      });
+    }
+
+    // 清除商品表单
+    function clearProductForm() {
+      productForm.reset();
+      productIdInput.value = '';
+      editFormTitle.textContent = '添加新商品';
+      
+      // 清除图片上传状态和预览
+      if (productImageUpload) {
+        productImageUpload.value = '';
+      }
+      if (imageUploadStatus) {
+        imageUploadStatus.textContent = '';
+        imageUploadStatus.className = 'text-sm text-gray-400';
+      }
+      
+      // 清除多张图片预览
+      const previewContainer = document.getElementById('images-preview-container');
+      if (previewContainer) {
+        previewContainer.remove();
+      }
+    }
+
+    // 编辑商品
+    function editProduct(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      productIdInput.value = product.id;
+      document.getElementById('product-name').value = product.name;
+      document.getElementById('product-price').value = product.price;
+      document.getElementById('product-category').value = product.category;
+      document.getElementById('product-tags').value = product.tags.join(', ');
+      document.getElementById('product-description').value = product.description;
+
+      // 显示已上传的图片
+      const productImages = product.images || [];
+      
+      // 先清除之前的预览容器
+      const existingPreviewContainer = document.getElementById('images-preview-container');
+      if (existingPreviewContainer) {
+        existingPreviewContainer.remove();
+      }
+      
+      if (productImages.length > 0) {
+        // 显示上传状态
+        imageUploadStatus.textContent = `已上传 ${productImages.length} 张图片`;
+        imageUploadStatus.className = 'text-sm text-green-400';
+        
+        // 创建新的预览容器
+        const previewContainer = document.createElement('div');
+        previewContainer.className = 'mt-3 flex flex-wrap';
+        previewContainer.id = 'images-preview-container';
+        productImageUpload.parentElement.parentElement.appendChild(previewContainer);
+        
+        // 添加每张图片的预览
+        productImages.forEach(imageUrl => {
+          const previewItem = document.createElement('div');
+          previewItem.className = 'image-preview-item relative m-2';
+          previewItem.innerHTML = `
+            <img src="${imageUrl}" alt="预览图" class="h-16 rounded">
+            <button class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 focus:outline-none remove-image" data-url="${imageUrl}">
+              ×
+            </button>
+          `;
+          
+          previewContainer.appendChild(previewItem);
+          
+          // 添加移除图片事件
+          previewItem.querySelector('.remove-image').addEventListener('click', function() {
+            this.parentElement.remove();
+            
+            // 更新上传状态
+            const remainingImages = document.querySelectorAll('.image-preview-item').length;
+            if (remainingImages === 0) {
+              imageUploadStatus.textContent = '';
+              imageUploadStatus.className = 'text-sm text-gray-400';
+              previewContainer.remove();
+            } else {
+              imageUploadStatus.textContent = `已上传 ${remainingImages} 张图片`;
+            }
+          });
+        });
+      } else {
+        // 如果没有图片，清除上传状态
+        imageUploadStatus.textContent = '';
+        imageUploadStatus.className = 'text-sm text-gray-400';
+      }
+
+      editFormTitle.textContent = '编辑商品';
+    }
+
+    // 删除商品
+    function deleteProduct(productId) {
+      if (confirm('确定要删除这个商品吗？')) {
+        products = products.filter(p => p.id !== productId);
+        renderProducts(products);
+        renderAdminProductsList();
+        showNotification('商品已删除');
+      }
+    }
+
+    // 处理商品表单提交
+    function handleProductFormSubmit(e) {
+      e.preventDefault();
+
+      const productId = productIdInput.value;
+      const name = document.getElementById('product-name').value;
+      const price = parseFloat(document.getElementById('product-price').value);
+      const category = document.getElementById('product-category').value;
+      const tags = document.getElementById('product-tags').value.split(',').map(tag => tag.trim()).filter(tag => tag);
+      const description = document.getElementById('product-description').value;
+      
+      // 获取上传的图片
+      const previewItems = document.querySelectorAll('.image-preview-item');
+      const images = Array.from(previewItems).map(item => {
+        return item.querySelector('img').src;
+      });
+
+      if (productId) {
+        // 编辑现有商品
+        const productIndex = products.findIndex(p => p.id === parseInt(productId));
+        if (productIndex !== -1) {
+          products[productIndex] = {
+            ...products[productIndex],
+            name,
+            price,
+            category,
+            tags,
+            images: images.length > 0 ? images : products[productIndex].images,
+            description
+          };
+          showNotification('商品已更新');
+        }
+      } else {
+        // 添加新商品
+        // 如果没有上传图片，使用默认图片
+        let defaultImages = [];
+        if (images.length === 0) {
+          defaultImages = ['https://p26-doubao-search-sign.byteimg.com/labis/aa21d9a585e58dc339a5d51d271f9ece~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1776623422&x-signature=Zu%2BFmwmHBDJsW9efm%2FwU7O63jTs%3D'];
+        }
+        
+        const newProduct = {
+          id: products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1,
+          name,
+          price,
+          category,
+          tags,
+          images: images.length > 0 ? images : defaultImages,
+          description,
+          clicks: 0
+        };
+        products.push(newProduct);
+        showNotification('商品已添加');
+      }
+
+      // 保存数据
+      saveProductsData();
+      
+      // 更新商品列表
+      renderProducts(products);
+      renderAdminProductsList();
+      clearProductForm();
+    }
+
+    // 打开修改密码模态框
+    function openChangePasswordModal() {
+      changePasswordModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭修改密码模态框
+    function closeChangePasswordModal() {
+      changePasswordModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // 处理修改密码
+    function handleChangePassword(e) {
+      e.preventDefault();
+      const currentPassword = document.getElementById('current-password').value;
+      const newPassword = document.getElementById('new-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (currentPassword !== admin.password) {
+        showNotification('当前密码不正确', 'error');
+        return;
+      }
+
+      if (newPassword !== confirmPassword) {
+        showNotification('新密码和确认密码不一致', 'error');
+        return;
+      }
+
+      if (newPassword.length < 6) {
+        showNotification('新密码长度不能少于6个字符', 'error');
+        return;
+      }
+
+      // 更新密码
+      admin.password = newPassword;
+      
+      // 保存管理员数据
+      saveAdminData();
+      
+      changePasswordForm.reset();
+      closeChangePasswordModal();
+      showNotification('密码已更新');
+    }
+
+    // 显示通知
+    function showNotification(message, type = 'success') {
+      notificationMessage.textContent = message;
+      
+      // 设置通知类型样式
+      notification.className = notification.className.replace(/bg-\w+-\d+/, '');
+      if (type === 'error') {
+        notification.classList.add('bg-red-500');
+        notification.querySelector('i').className = 'fa fa-exclamation-circle mr-2';
+      } else if (type === 'info') {
+        notification.classList.add('bg-blue-500');
+        notification.querySelector('i').className = 'fa fa-info-circle mr-2';
+      } else {
+        notification.classList.add('bg-green-500');
+        notification.querySelector('i').className = 'fa fa-check-circle mr-2';
+      }
+      
+      // 显示通知
+      notification.classList.remove('translate-y-20', 'opacity-0');
+      
+      // 3秒后隐藏
+      setTimeout(() => {
+        notification.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // 处理搜索
+    function handleSearch() {
+      const searchTerm = searchInput.value.trim().toLowerCase() || mobileSearchInput.value.trim().toLowerCase();
+      
+      if (!searchTerm) {
+        renderProducts(products);
+        return;
+      }
+      
+      const filteredProducts = products.filter(product => 
+        product.name.toLowerCase().includes(searchTerm) || 
+        product.description.toLowerCase().includes(searchTerm) || 
+        product.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+      );
+      
+      renderProducts(filteredProducts);
+    }
+
+    // 处理管理员搜索
+    function handleAdminSearch() {
+      const searchTerm = adminSearchInput.value.trim().toLowerCase();
+      
+      if (!searchTerm) {
+        renderAdminProductsList();
+        return;
+      }
+      
+      const filteredProducts = products.filter(product => 
+        product.name.toLowerCase().includes(searchTerm) || 
+        product.description.toLowerCase().includes(searchTerm) || 
+        product.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+      );
+      
+      renderAdminProductsList(filteredProducts);
+    }
+
+    // 切换移动端搜索框
+    function toggleMobileSearch() {
+      mobileSearch.classList.toggle('hidden');
+      if (!mobileSearch.classList.contains('hidden')) {
+        mobileSearchInput.focus();
+      }
+    }
+
+    // 处理图片上传
+    function handleImageUpload(e) {
+      const files = e.target.files;
+      if (!files || files.length === 0) return;
+      
+      // 检查文件数量 (最多 6 张)
+      const existingImages = document.querySelectorAll('.image-preview-item').length;
+      if (existingImages + files.length > 6) {
+        imageUploadStatus.textContent = `最多只能上传 6 张图片，已上传 ${existingImages} 张`;
+        imageUploadStatus.className = 'text-sm text-red-400';
+        return;
+      }
+      
+      // 处理每张图片
+      Array.from(files).forEach(file => {
+        // 检查文件类型
+        if (!file.type.match('image.*')) {
+          imageUploadStatus.textContent = '请上传图片文件';
+          imageUploadStatus.className = 'text-sm text-red-400';
+          return;
+        }
+        
+        // 检查文件大小 (最大 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+          imageUploadStatus.textContent = '图片大小不能超过 5MB';
+          imageUploadStatus.className = 'text-sm text-red-400';
+          return;
+        }
+        
+        // 创建预览
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          // 在实际应用中，这里会将图片上传到服务器
+          // 这里我们使用模拟上传，直接使用DataURL作为图片URL
+          const imageUrl = e.target.result;
+          
+          // 显示上传成功状态
+          imageUploadStatus.textContent = `已上传 ${existingImages + document.querySelectorAll('.image-preview-item').length + 1} 张图片`;
+          imageUploadStatus.className = 'text-sm text-green-400';
+          
+          // 显示预览图
+          const previewItem = document.createElement('div');
+          previewItem.className = 'image-preview-item relative m-2';
+          previewItem.innerHTML = `
+            <img src="${imageUrl}" alt="预览图" class="h-16 rounded">
+            <button class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 focus:outline-none remove-image" data-url="${imageUrl}">
+              ×
+            </button>
+          `;
+          
+          // 添加到预览容器
+          let previewContainer = document.getElementById('images-preview-container');
+          if (!previewContainer) {
+            previewContainer = document.createElement('div');
+            previewContainer.className = 'mt-3 flex flex-wrap';
+            previewContainer.id = 'images-preview-container';
+            productImageUpload.parentElement.parentElement.appendChild(previewContainer);
+          }
+          
+          previewContainer.appendChild(previewItem);
+          
+          // 添加移除图片事件
+          previewItem.querySelector('.remove-image').addEventListener('click', function() {
+            this.parentElement.remove();
+            
+            // 更新上传状态
+            const remainingImages = document.querySelectorAll('.image-preview-item').length;
+            if (remainingImages === 0) {
+              imageUploadStatus.textContent = '';
+              imageUploadStatus.className = 'text-sm text-gray-400';
+              previewContainer.remove();
+            } else {
+              imageUploadStatus.textContent = `已上传 ${remainingImages} 张图片`;
+            }
+          });
+        };
+        
+        reader.readAsDataURL(file);
+      });
+    }
+    
+    // 初始化商品轮播
+    function initProductCarousel() {
+      const carouselSlides = document.getElementById('carousel-slides');
+      const prevButton = document.getElementById('prev-slide');
+      const nextButton = document.getElementById('next-slide');
+      const indicators = document.getElementById('carousel-indicators').querySelectorAll('button');
+      const totalSlides = indicators.length;
+      let currentSlide = 0;
+      let slideInterval;
+      
+      // 设置轮播自动播放
+      function startAutoSlide() {
+        slideInterval = setInterval(() => {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          updateCarousel();
+        }, 5000); // 每 5 秒切换一次
+      }
+      
+      // 停止自动播放
+      function stopAutoSlide() {
+        clearInterval(slideInterval);
+      }
+      
+      // 更新轮播状态
+      function updateCarousel() {
+        carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // 更新指示器状态
+        indicators.forEach((indicator, index) => {
+          if (index === currentSlide) {
+            indicator.classList.add('bg-opacity-100');
+            indicator.classList.remove('bg-opacity-50');
+          } else {
+            indicator.classList.remove('bg-opacity-100');
+            indicator.classList.add('bg-opacity-50');
+          }
+        });
+      }
+      
+      // 上一张
+      prevButton.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      });
+      
+      // 下一张
+      nextButton.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      });
+      
+      // 点击指示器切换
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          currentSlide = index;
+          updateCarousel();
+        });
+      });
+      
+      // 鼠标悬停时停止自动播放，离开时恢复
+      const carousel = document.getElementById('product-carousel');
+      carousel.addEventListener('mouseenter', stopAutoSlide);
+      carousel.addEventListener('mouseleave', startAutoSlide);
+      
+      // 开始自动播放
+      startAutoSlide();
+    }
+    
+    // 按分类筛选
+    function filterByCategory(category) {
+      // 更新按钮样式
+      const buttons = [allBtn, electronicsBtn, homeBtn, beautyBtn, babyBtn, clothingBtn, hotBtn];
+      buttons.forEach(btn => {
+        btn.className = 'bg-gray-200 hover:bg-totem-blue-100 text-gray-700 px-4 py-1 rounded-full text-sm font-medium transition duration-300';
+      });
+      
+      if (category === 'all') {
+        allBtn.className = 'bg-totem-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium';
+        renderProducts(products);
+      } else {
+        let activeBtn;
+        switch(category) {
+          case 'electronics':
+            activeBtn = electronicsBtn;
+            break;
+          case 'home':
+            activeBtn = homeBtn;
+            break;
+          case 'beauty':
+            activeBtn = beautyBtn;
+            break;
+          case 'baby':
+            activeBtn = babyBtn;
+            break;
+          case 'clothing':
+            activeBtn = clothingBtn;
+            break;
+          case 'hot':
+            activeBtn = hotBtn;
+            break;
+          default:
+            activeBtn = allBtn;
+        }
+        
+        activeBtn.className = 'bg-totem-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium';
+        
+        const filteredProducts = products.filter(product => product.category === category);
+        renderProducts(filteredProducts);
+      }
+    }
+    
+    // 显示随机热销商品
+    function showRandomHotProduct() {
+      const hotProducts = products.filter(product => product.category === 'hot');
+      if (hotProducts.length === 0) {
+        showNotification('No hot sale products available', 'info');
+        return;
+      }
+      
+      const randomIndex = Math.floor(Math.random() * hotProducts.length);
+      const randomProduct = hotProducts[randomIndex];
+      
+      // 打开商品详情
+      openProductDetails(randomProduct.id);
+    }
+    
+    // 实现管理员按钮显示功能
+    function implementAdminButtonDisplay() {
+      const adminBtn = document.getElementById('admin-btn');
+      
+      // 1. 点击logo五次显示管理员按钮
+      const logo = document.querySelector('header img');
+      let logoClickCount = 0;
+      
+      if (logo) {
+        logo.addEventListener('click', () => {
+          logoClickCount++;
+          
+          // 5秒内点击5次才有效
+          if (logoClickCount === 1) {
+            setTimeout(() => {
+              logoClickCount = 0;
+            }, 5000);
+          }
+          
+          if (logoClickCount >= 5) {
+            adminBtn.classList.toggle('hidden');
+            showNotification(adminBtn.classList.contains('hidden') ? '管理员入口已隐藏' : '管理员入口已显示');
+            logoClickCount = 0;
+          }
+        });
+      }
+      
+      // 2. URL参数显示管理员按钮
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('admin')) {
+        adminBtn.classList.remove('hidden');
+        showNotification('通过URL参数显示管理员入口');
+      }
+      
+      // 3. F9键显示管理员按钮
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'F9') {
+          e.preventDefault();
+          adminBtn.classList.toggle('hidden');
+          showNotification(adminBtn.classList.contains('hidden') ? '管理员入口已隐藏' : '管理员入口已显示');
+        }
+      });
+      
+      // 4. alt+F3+F组合键显示管理员按钮 (已在DOMContentLoaded中实现)
+    }
+  </script>
+</body>
+</html>

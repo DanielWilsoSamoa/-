@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试数据持久化功能</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">测试数据持久化功能</h1>
+    
+    <div class="space-y-4">
+      <div>
+        <h2 class="text-lg font-semibold mb-2">localStorage 数据</h2>
+        <div id="localstorage-data" class="p-4 bg-gray-100 rounded overflow-auto max-h-60">
+          <p class="text-gray-500">加载中...</p>
+        </div>
+      </div>
+      
+      <div class="flex space-x-2">
+        <button id="load-data" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          加载数据
+        </button>
+        <button id="clear-data" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+          清除数据
+        </button>
+        <button id="reload-page" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          重新加载页面
+        </button>
+      </div>
+      
+      <div class="mt-6">
+        <h2 class="text-lg font-semibold mb-2">使用说明</h2>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>添加、编辑或删除商品后，刷新页面查看数据是否保存</li>
+          <li>修改LOGO或密码后，刷新页面查看数据是否保存</li>
+          <li>点击"加载数据"按钮查看当前localStorage中的数据</li>
+          <li>点击"清除数据"按钮删除所有保存的数据（恢复默认值）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 加载localStorage数据
+    document.getElementById('load-data').addEventListener('click', loadLocalStorageData);
+    
+    // 清除localStorage数据
+    document.getElementById('clear-data').addEventListener('click', clearLocalStorageData);
+    
+    // 重新加载页面
+    document.getElementById('reload-page').addEventListener('click', () => {
+      window.location.reload();
+    });
+    
+    // 页面加载时自动显示localStorage数据
+    window.addEventListener('load', loadLocalStorageData);
+    
+    function loadLocalStorageData() {
+      const localStorageData = document.getElementById('localstorage-data');
+      let html = '';
+      
+      // 检查是否有保存的商品数据
+      const productsData = localStorage.getItem('romanticSamoaProducts');
+      if (productsData) {
+        const products = JSON.parse(productsData);
+        html += '<div class="mb-4">';
+        html += '<h3 class="font-medium text-blue-700">商品数据 (' + products.length + ' 个商品)</h3>';
+        html += '<pre class="text-sm mt-1">' + JSON.stringify(products.map(p => ({
+          id: p.id,
+          name: p.name,
+          price: p.price,
+          category: p.category
+        })), null, 2) + '</pre>';
+        html += '</div>';
+      } else {
+        html += '<div class="mb-4">';
+        html += '<h3 class="font-medium text-gray-700">商品数据</h3>';
+        html += '<p class="text-sm text-gray-500">未找到保存的商品数据</p>';
+        html += '</div>';
+      }
+      
+      // 检查是否有保存的管理员数据
+      const adminData = localStorage.getItem('romanticSamoaAdmin');
+      if (adminData) {
+        const admin = JSON.parse(adminData);
+        html += '<div>';
+        html += '<h3 class="font-medium text-blue-700">管理员数据</h3>';
+        html += '<pre class="text-sm mt-1">' + JSON.stringify({
+          username: admin.username,
+          logo: admin.logo ? '已设置自定义LOGO' : '使用默认LOGO'
+        }, null, 2) + '</pre>';
+        html += '</div>';
+      } else {
+        html += '<div>';
+        html += '<h3 class="font-medium text-gray-700">管理员数据</h3>';
+        html += '<p class="text-sm text-gray-500">未找到保存的管理员数据</p>';
+        html += '</div>';
+      }
+      
+      localStorageData.innerHTML = html;
+    }
+    
+    function clearLocalStorageData() {
+      if (confirm('确定要清除所有保存的数据吗？这将恢复到默认设置。')) {
+        localStorage.removeItem('romanticSamoaProducts');
+        localStorage.removeItem('romanticSamoaAdmin');
+        showNotification('所有数据已清除');
+        loadLocalStorageData();
+      }
+    }
+    
+    // 显示通知
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 z-50';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      // 3秒后隐藏
+      setTimeout(() => {
+        notification.classList.add('opacity-0', 'translate-y-20');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

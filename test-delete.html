@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试删除商品功能</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">测试删除商品功能</h1>
+    
+    <div class="mb-4">
+      <button id="load-products" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        加载商品列表
+      </button>
+    </div>
+    
+    <div id="products-list" class="space-y-4">
+      <!-- 商品列表将在这里显示 -->
+    </div>
+    
+    <div id="debug-info" class="mt-6 p-4 bg-gray-100 rounded">
+      <h2 class="text-lg font-semibold mb-2">调试信息</h2>
+      <pre id="debug-output" class="text-sm"></pre>
+    </div>
+  </div>
+
+  <script>
+    // 模拟商品数据
+    let products = [
+      { id: 1, name: "测试商品1", price: 99.9, category: "test", tags: ["test"], images: [], description: "测试商品1描述", clicks: 0 },
+      { id: 2, name: "测试商品2", price: 199.9, category: "test", tags: ["test"], images: [], description: "测试商品2描述", clicks: 0 },
+      { id: 3, name: "测试商品3", price: 299.9, category: "test", tags: ["test"], images: [], description: "测试商品3描述", clicks: 0 }
+    ];
+
+    // 加载商品列表
+    document.getElementById('load-products').addEventListener('click', () => {
+      renderProducts();
+      logDebugInfo('商品列表已加载');
+    });
+
+    // 渲染商品列表
+    function renderProducts() {
+      const productsList = document.getElementById('products-list');
+      productsList.innerHTML = '';
+
+      products.forEach(product => {
+        const productItem = document.createElement('div');
+        productItem.className = 'p-4 border rounded flex justify-between items-center';
+        productItem.innerHTML = `
+          <div>
+            <h3 class="font-semibold">${product.name}</h3>
+            <p class="text-sm text-gray-600">ID: ${product.id}, 价格: ¥${product.price.toFixed(2)}</p>
+          </div>
+          <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" data-id="${product.id}">
+            删除
+          </button>
+        `;
+        productsList.appendChild(productItem);
+      });
+
+      // 添加删除事件
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const productId = parseInt(e.target.dataset.id);
+          deleteProduct(productId);
+        });
+      });
+    }
+
+    // 删除商品
+    function deleteProduct(productId) {
+      logDebugInfo(`尝试删除商品，ID: ${productId}`);
+      logDebugInfo(`删除前商品数量: ${products.length}`);
+      
+      if (confirm('确定要删除这个商品吗？')) {
+        // 查找要删除的商品
+        const productIndex = products.findIndex(p => p.id === productId);
+        if (productIndex !== -1) {
+          const productToDelete = products[productIndex];
+          logDebugInfo(`找到要删除的商品: ${productToDelete.name}`);
+          
+          // 执行删除
+          products.splice(productIndex, 1);
+          logDebugInfo(`删除后商品数量: ${products.length}`);
+          
+          // 更新UI
+          renderProducts();
+          alert('商品已删除');
+        } else {
+          logDebugInfo(`未找到ID为 ${productId} 的商品`);
+          logDebugInfo(`当前商品列表: ${JSON.stringify(products.map(p => ({id: p.id, name: p.name})), null, 2)}`);
+          alert('未找到该商品');
+        }
+      }
+    }
+
+    // 记录调试信息
+    function logDebugInfo(message) {
+      const debugOutput = document.getElementById('debug-output');
+      const timestamp = new Date().toLocaleTimeString();
+      debugOutput.textContent += `[${timestamp}] ${message}\n`;
+      debugOutput.scrollTop = debugOutput.scrollHeight;
+    }
+  </script>
+</body>
+</html>

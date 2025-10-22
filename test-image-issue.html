@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试图片重复显示问题</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">测试图片重复显示问题</h1>
+    
+    <div class="space-y-4">
+      <div>
+        <h2 class="text-lg font-semibold mb-2">问题描述</h2>
+        <p class="text-gray-700">管理员每点击一次搜索的商品，商品图片就会多一张。</p>
+      </div>
+      
+      <div>
+        <h2 class="text-lg font-semibold mb-2">已修复的问题</h2>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>修复了管理员商品列表中图片显示的问题（使用images数组而非image属性）</li>
+          <li>修复了编辑商品时图片预览重复显示的问题（先清除之前的预览容器）</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h2 class="text-lg font-semibold mb-2">测试步骤</h2>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li>使用管理员账号登录（admin/admin123）</li>
+          <li>在管理员面板中搜索商品</li>
+          <li>点击搜索结果中的商品进行编辑</li>
+          <li>查看商品图片是否正确显示，没有重复</li>
+          <li>保存商品，再次查看图片是否正常</li>
+        </ol>
+      </div>
+      
+      <div>
+        <h2 class="text-lg font-semibold mb-2">调试信息</h2>
+        <div id="debug-info" class="p-4 bg-gray-100 rounded">
+          <p class="text-gray-500">请在网站中操作，然后查看浏览器控制台的调试信息。</p>
+        </div>
+      </div>
+      
+      <div class="flex space-x-2">
+        <a href="index.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          返回网站
+        </a>
+        <button id="clear-localstorage" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+          清除本地存储
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 清除本地存储
+    document.getElementById('clear-localstorage').addEventListener('click', () => {
+      if (confirm('确定要清除所有本地存储数据吗？这将恢复到默认设置。')) {
+        localStorage.removeItem('romanticSamoaProducts');
+        localStorage.removeItem('romanticSamoaAdmin');
+        alert('本地存储已清除');
+      }
+    });
+    
+    // 显示调试信息
+    function updateDebugInfo() {
+      const debugInfo = document.getElementById('debug-info');
+      let html = '';
+      
+      // 检查是否有保存的商品数据
+      const productsData = localStorage.getItem('romanticSamoaProducts');
+      if (productsData) {
+        const products = JSON.parse(productsData);
+        html += '<h3 class="font-medium text-blue-700 mb-1">当前商品数据</h3>';
+        html += '<div class="space-y-2">';
+        
+        products.forEach(product => {
+          html += '<div class="p-2 bg-white rounded">';
+          html += `<p class="font-medium">${product.name}</p>`;
+          html += `<p class="text-sm">ID: ${product.id}</p>`;
+          html += `<p class="text-sm">图片数量: ${product.images ? product.images.length : 0}</p>`;
+          
+          if (product.images && product.images.length > 0) {
+            html += '<div class="flex flex-wrap gap-1 mt-1">';
+            product.images.forEach((img, index) => {
+              html += `<div class="relative">`;
+              html += `<img src="${img}" alt="图片 ${index + 1}" class="h-12 rounded">`;
+              html += `<span class="absolute bottom-0 right-0 bg-black bg-opacity-50 text-white text-xs px-1 rounded">${index + 1}</span>`;
+              html += `</div>`;
+            });
+            html += '</div>';
+          }
+          
+          html += '</div>';
+        });
+        
+        html += '</div>';
+      } else {
+        html += '<p class="text-gray-500">未找到保存的商品数据</p>';
+      }
+      
+      debugInfo.innerHTML = html;
+    }
+    
+    // 页面加载时更新调试信息
+    window.addEventListener('load', updateDebugInfo);
+    
+    // 每5秒自动更新一次调试信息
+    setInterval(updateDebugInfo, 5000);
+  </script>
+</body>
+</html>
